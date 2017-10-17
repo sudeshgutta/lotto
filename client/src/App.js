@@ -37,14 +37,14 @@ class App extends Component {
                   <div key={index}>Row {index + 1} - {this.renderLottoBlock(lottonumber)}</div>
                 );
               })}
-              <button className="more" onClick={this.getLottoNumbers}>
+              <button className="getmore" onClick={this.getLottoNumbers}>
                 Get More
               </button>
             </div>
           : // Render a helpful message otherwise
             <div>
               <h1>No Numbers Generated :(</h1>
-              <button className="more" onClick={this.getLottoNumbers}>
+              <button className="getmore" onClick={this.getLottoNumbers}>
                 Try Again?
               </button>
             </div>}

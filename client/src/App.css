@@ -20,7 +20,7 @@ h1 {
   border: 1px solid rgba(0, 0, 0, .2);
 }
 
-.more {
+.getmore {
   font-size: 32px;
   font-family: "Courier New", monospace;
   border: 2px solid #000;
@@ -28,9 +28,9 @@ h1 {
   padding: 10px 25px;
   margin: 25px;
 }
-.more:hover {
+.getmore:hover {
   background-color: #FDD836;
 }
-.more:active {
+.getmore:active {
   background-color: #FFEFA9;
 }
