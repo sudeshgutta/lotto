@@ -5,13 +5,13 @@ class App extends Component {
   // Initialize state
   state = { lottonumbers: [] };
 
-  // Fetch passwords after first mount
+  // Fetch lotto numbers after first mount
   componentDidMount() {
     this.getLottoNumbers();
   }
 
   getLottoNumbers = () => {
-    // Get the passwords and store them in state
+    // Get the randomly generated lotto numbers and store them in state
     fetch("/api/lotto")
       .then(res => res.json())
       .then(lottonumbers => this.setState({ lottonumbers }));
@@ -28,19 +28,13 @@ class App extends Component {
 
     return (
       <div className="App">
-        {/* Render the passwords if we have them */}
+        {/* Render the numbers if we have them */}
         {lottonumbers.length
           ? <div>
-              <h1>5 Lotto Numbers.</h1>
-              {/*
-                Generally it's bad to use "index" as a key.
-                It's ok for this example because there will always
-                be the same number of passwords, and they never
-                change positions in the array.
-              */}
+              <h1>Random Lotto Number Generator!</h1>
               {lottonumbers.map((lottonumber, index) => {
                 return (
-                  <div key={index}>{this.renderLottoBlock(lottonumber)}</div>
+                  <div key={index}>Row {index + 1} - {this.renderLottoBlock(lottonumber)}</div>
                 );
               })}
               <button className="more" onClick={this.getLottoNumbers}>
