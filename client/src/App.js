@@ -38,7 +38,7 @@ class App extends Component {
                 );
               })}
               <button className="getmore" onClick={this.getLottoNumbers}>
-                Get More
+                Dude.. Get Me More
               </button>
             </div>
           : // Render a helpful message otherwise

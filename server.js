@@ -19,7 +19,7 @@ app.get("/api/lotto", (req, res) => {
   // Return them as json
   res.json(numbers);
 
-  console.log(`Sent ${count} lotto numbers`);
+  console.log(`Sent ${count} lotto rows`);
 });
 
 // The "catchall" handler: for any request that doesn't
