@@ -9,11 +9,15 @@ h1 {
   font-size: 42px;
 }
 
-.passwords {
-  list-style: none;
-  padding: 0;
-  font-size: 32px;
-  margin-bottom: 2em;
+.tinysquare {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  margin: 15px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 40px;
+  border: 1px solid rgba(0, 0, 0, .2);
 }
 
 .more {
@@ -22,6 +26,7 @@ h1 {
   border: 2px solid #000;
   background-color: #fff;
   padding: 10px 25px;
+  margin: 25px;
 }
 .more:hover {
   background-color: #FDD836;

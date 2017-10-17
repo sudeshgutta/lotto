@@ -1,6 +1,6 @@
 const express = require("express");
 const path = require("path");
-const generatePassword = require("password-generator");
+const _ = require("lodash-node/compat");
 
 const app = express();
 
@@ -8,18 +8,18 @@ const app = express();
 app.use(express.static(path.join(__dirname, "client/build")));
 
 // Put all API endpoints under '/api'
-app.get("/api/passwords", (req, res) => {
+app.get("/api/lotto", (req, res) => {
   const count = 5;
 
-  // Generate some passwords
-  const passwords = Array.from(Array(count).keys()).map(i =>
-    generatePassword(12, false)
+  // Generate 6 numbers 
+  const numbers = Array.from(Array(count).keys()).map(i =>
+    _.sortBy(_.sample(_.range(1, 59), 6))
   );
 
   // Return them as json
-  res.json(passwords);
+  res.json(numbers);
 
-  console.log(`Sent ${count} passwords`);
+  console.log(`Sent ${count} lotto numbers`);
 });
 
 // The "catchall" handler: for any request that doesn't
