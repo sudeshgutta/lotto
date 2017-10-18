@@ -18,6 +18,9 @@ h1 {
   vertical-align: middle;
   line-height: 40px;
   border: 1px solid rgba(0, 0, 0, .2);
+  -webkit-animation-duration: 1s;
+  -webkit-animation-delay: 1s;
+  /*-webkit-animation-iteration-count: infinite;*/
 }
 
 .getmore {
@@ -33,4 +36,22 @@ h1 {
 }
 .getmore:active {
   background-color: #FFEFA9;
+}
+
+.fade-enter {
+  opacity: 0.01;
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 1000ms ease-in;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit.fade-exit-active {
+  opacity: 0.01;
+  transition: opacity ease-in;
 }

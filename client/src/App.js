@@ -1,5 +1,12 @@
 import React, { Component } from "react";
+import LottoBlock from "./lotto/components/LottoBlock";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 import "./App.css";
+
+const Fade = ({ children, ...props }) =>
+  <CSSTransition {...props} timeout={500} classNames="fade">
+    {children}
+  </CSSTransition>;
 
 class App extends Component {
   // Initialize state
@@ -17,11 +24,11 @@ class App extends Component {
       .then(lottonumbers => this.setState({ lottonumbers }));
   };
 
-  renderLottoBlock = numbers => {
-    return numbers.map((number, index) =>
-      <div className="tinysquare" key={index}>{number}</div>
-    );
-  };
+  // renderLottoBlock = numbers => {
+  //   return numbers.map((number, index) =>
+  //     <div className="tinysquare" id="ts" key={index}>{number}</div>
+  //   );
+  // };
 
   render() {
     const { lottonumbers } = this.state;
@@ -32,11 +39,18 @@ class App extends Component {
         {lottonumbers.length
           ? <div>
               <h1>Random Lotto Number Generator!</h1>
-              {lottonumbers.map((lottonumber, index) => {
-                return (
-                  <div key={index}>Row {index + 1} - {this.renderLottoBlock(lottonumber)}</div>
+              <TransitionGroup className="todo-list">
+                {lottonumbers.map((lottonumber, index) => {
+                  return(
+                  <Fade key={lottonumber}>
+                    <div key={index}>
+                      Row {index + 1} -{" "}
+                      <LottoBlock lottonumber={lottonumber} key={index} />
+                    </div>
+                  </Fade>
                 );
-              })}
+                })}
+              </TransitionGroup>
               <button className="getmore" onClick={this.getLottoNumbers}>
                 Dude.. Get Me More
               </button>
@@ -54,3 +68,5 @@ class App extends Component {
 }
 
 export default App;
+
+// <div key={index}>Row {index + 1} - {this.renderLottoBlock(lottonumber)}</div>
