@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import LottoBlock from "./lotto/components/LottoBlock";
+import SingleRow from "./components/lotto/SingleRow";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import "./App.css";
 
@@ -9,8 +9,12 @@ const Fade = ({ children, ...props }) =>
   </CSSTransition>;
 
 class App extends Component {
+  
+  constructor(props) {
+    super(props);
   // Initialize state
-  state = { lottonumbers: [] };
+    this.state = { lottonumbers: [] };
+  }
 
   // Fetch lotto numbers after first mount
   componentDidMount() {
@@ -45,7 +49,7 @@ class App extends Component {
                   <Fade key={lottonumber}>
                     <div key={index}>
                       Row {index + 1} -{" "}
-                      <LottoBlock lottonumber={lottonumber} key={index} />
+                      <SingleRow lottonumber={lottonumber} key={index} />
                     </div>
                   </Fade>
                 );
