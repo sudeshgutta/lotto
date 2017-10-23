@@ -1,18 +1,10 @@
 import React, { Component } from "react";
-import SingleRow from "./components/lotto/SingleRow";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
-import "./App.css";
-
-const Fade = ({ children, ...props }) =>
-  <CSSTransition {...props} timeout={500} classNames="fade">
-    {children}
-  </CSSTransition>;
+import Lotto from "./components/lotto/index";
 
 class App extends Component {
-  
   constructor(props) {
     super(props);
-  // Initialize state
+    // Initialize state
     this.state = { lottonumbers: [] };
   }
 
@@ -28,49 +20,14 @@ class App extends Component {
       .then(lottonumbers => this.setState({ lottonumbers }));
   };
 
-  // renderLottoBlock = numbers => {
-  //   return numbers.map((number, index) =>
-  //     <div className="tinysquare" id="ts" key={index}>{number}</div>
-  //   );
-  // };
-
   render() {
-    const { lottonumbers } = this.state;
-
     return (
-      <div className="App">
-        {/* Render the numbers if we have them */}
-        {lottonumbers.length
-          ? <div>
-              <h1>Random Lotto Number Generator!</h1>
-              <TransitionGroup className="todo-list">
-                {lottonumbers.map((lottonumber, index) => {
-                  return(
-                  <Fade key={lottonumber}>
-                    <div key={index}>
-                      Row {index + 1} -{" "}
-                      <SingleRow lottonumber={lottonumber} key={index} />
-                    </div>
-                  </Fade>
-                );
-                })}
-              </TransitionGroup>
-              <button className="getmore" onClick={this.getLottoNumbers}>
-                Dude.. Get Me More
-              </button>
-            </div>
-          : // Render a helpful message otherwise
-            <div>
-              <h1>No Numbers Generated :(</h1>
-              <button className="getmore" onClick={this.getLottoNumbers}>
-                Try Again?
-              </button>
-            </div>}
-      </div>
+      <Lotto
+        {...this.state}
+        getLottoNumbers={this.getLottoNumbers.bind(this)}
+      />
     );
   }
 }
 
 export default App;
-
-// <div key={index}>Row {index + 1} - {this.renderLottoBlock(lottonumber)}</div>
